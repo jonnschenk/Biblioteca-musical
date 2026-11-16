@@ -1,17 +1,60 @@
-# React + Vite
+# Biblioteca musical
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Aplicación en React para explorar canciones y armar una biblioteca personal. Proyecto académico construido por etapas.
 
-Currently, two official plugins are available:
+🔗 Demo: [https://jonnschenk.github.io/Biblioteca-musical/](https://jonnschenk.github.io/Biblioteca-musical/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Etapas
 
-## React Compiler
+- [x] **Etapa 1 — Componentes de clase:** `Header` y `Song` como componentes de clase con props y ciclo de vida (`componentDidMount`).
+- [x] **Etapa 2 — Componentes funcionales y hooks:** refactor a componentes funcionales, estado con `useState`, efectos con `useEffect`, lista de resultados de búsqueda y biblioteca personal con datos ficticios.
+- [ ] **Próxima etapa:** conectar los resultados de búsqueda con una API.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Funcionalidades
 
-## Expanding the Oxlint configuration
+- Lista de resultados de búsqueda (datos ficticios).
+- Botón "Agregar a mi biblioteca" en cada canción; evita duplicados.
+- Biblioteca personal que se actualiza en tiempo real.
+- Mensaje en consola cada vez que la biblioteca cambia (`useEffect`).
+- Diseño responsive con modo claro y oscuro.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
-# Biblioteca-musical
+## Tecnologías
+
+- React 19 (componentes funcionales y hooks)
+- Vite
+- CSS por componente
+- Oxlint
+- GitHub Actions + GitHub Pages para el despliegue
+
+## Instalación y uso
+
+```bash
+git clone https://github.com/jonnschenk/Biblioteca-musical.git
+cd Biblioteca-musical
+npm install
+npm run dev       # servidor de desarrollo
+npm run build     # versión de producción en dist/
+npm run lint      # revisión con Oxlint
+```
+
+## Estructura
+
+```
+src/
+├── App.jsx / App.css       # Estado de la app (useState, useEffect) y layout
+├── main.jsx                # Punto de entrada
+├── index.css               # Variables y estilos globales
+├── data/
+│   └── songs.js            # Canciones ficticias
+└── components/
+    ├── Header/             # Título y subtítulo
+    ├── Song/               # Tarjeta de canción (con botón opcional)
+    ├── SearchResults/      # Lista de resultados de búsqueda
+    └── Library/            # Biblioteca personal del usuario
+```
+
+Cada componente tiene su propia carpeta con su archivo `.jsx` y su `styles.css`.
+
+## Autor
+
+Jonathan M. Ramírez · [GitHub](https://github.com/jonnschenk)
