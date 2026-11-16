@@ -1,7 +1,7 @@
 .search-results {
   padding: 20px;
   border-radius: 12px;
-  background: var(--code-bg);
+  background: var(--surface);
 }
 
 .search-results__list {

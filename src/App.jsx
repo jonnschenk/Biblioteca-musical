@@ -19,9 +19,8 @@ function App() {
 
   const handleAddSong = (song) => {
     setLibrary((prevLibrary) => {
-      const yaExiste = prevLibrary.some((item) => item.id === song.id);
-      if (yaExiste) return prevLibrary;
-      return [...prevLibrary, song];
+      const alreadyAdded = prevLibrary.some((item) => item.id === song.id);
+      return alreadyAdded ? prevLibrary : [...prevLibrary, song];
     });
   };
 
