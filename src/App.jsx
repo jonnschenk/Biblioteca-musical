@@ -1,48 +1,44 @@
-import React, { Component } from "react";
-import Header from "./components/Header.jsx";
-import Song from "./components/Song.jsx";
-import "./App.css";
+import { useEffect, useState } from 'react';
+import Header from './components/Header/Header.jsx';
+import SearchResults from './components/SearchResults/SearchResults.jsx';
+import Library from './components/Library/Library.jsx';
+import { mockSongs } from './data/songs.js';
+import './App.css';
 
-class App extends Component {
+function App() {
+  const [searchResults] = useState(mockSongs);
+  const [library, setLibrary] = useState([]);
 
-  componentDidMount() {
-    console.log("¡La aplicación se ha cargado correctamente!");
-  }
+  useEffect(() => {
+    console.log('¡La aplicación se ha cargado correctamente!');
+  }, []);
 
-  render() {
-    return (
-      <div className="app">
-        <Header />
+  useEffect(() => {
+    console.log(`Biblioteca actualizada: ${library.length} canción(es)`, library);
+  }, [library]);
 
-        <main>
-          <h2>Mis canciones</h2>
+  const handleAddSong = (song) => {
+    setLibrary((prevLibrary) => {
+      const yaExiste = prevLibrary.some((item) => item.id === song.id);
+      if (yaExiste) return prevLibrary;
+      return [...prevLibrary, song];
+    });
+  };
 
-          <div className="song-list">
-            <Song
-              title="Blinding Lights"
-              artist="The Weeknd"
-              album="After Hours"
-              duration="3:20"
-            />
+  return (
+    <div className="app">
+      <Header title="Biblioteca musical" subtitle="Tu música favorita en un solo lugar" />
 
-            <Song
-              title="As It Was"
-              artist="Harry Styles"
-              album="Harry's House"
-              duration="2:47"
-            />
-
-            <Song
-              title="Levitating"
-              artist="Dua Lipa"
-              album="Future Nostalgia"
-              duration="3:23"
-            />
-          </div>
-        </main>
-      </div>
-    );
-  }
+      <main className="app__content">
+        <SearchResults
+          songs={searchResults}
+          library={library}
+          onAddSong={handleAddSong}
+        />
+        <Library songs={library} />
+      </main>
+    </div>
+  );
 }
 
 export default App;

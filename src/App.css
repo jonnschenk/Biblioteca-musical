@@ -5,23 +5,16 @@
   padding: 0 24px 32px;
 }
 
-.song-list {
-  display: grid; 
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.song {
-  padding: 16px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg);
-  box-shadow: var(--shadow);
+.app__content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: start;
   text-align: left;
 }
 
-.song h3 {
-  margin: 0 0 8px;
-  color: var(--text-h);
+@media (max-width: 860px) {
+  .app__content {
+    grid-template-columns: 1fr;
+  }
 }
