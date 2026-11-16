@@ -1,0 +1,17 @@
+.library {
+  padding: 20px;
+  border: 2px dashed var(--accent-border);
+  border-radius: 12px;
+}
+
+.library__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.library__empty {
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
