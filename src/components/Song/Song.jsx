@@ -1,16 +1,25 @@
-import React, { Component } from "react";
+import './styles.css';
 
-class Song extends Component {
-  render() {
-    return (
-      <div className="song">
-        <h3>{this.props.title}</h3>
-        <p>Artista: {this.props.artist}</p>
-        <p>Álbum: {this.props.album}</p>
-        <p>Duración: {this.props.duration}</p>
-      </div>
-    );
-  }
+function Song({ title, artist, album, duration, onAdd, isAdded = false }) {
+  return (
+    <article className="song">
+      <h3 className="song__title">{title}</h3>
+      <p>Artista: {artist}</p>
+      <p>Álbum: {album}</p>
+      <p>Duración: {duration}</p>
+
+      {onAdd && (
+        <button
+          type="button"
+          className="song__button"
+          onClick={onAdd}
+          disabled={isAdded}
+        >
+          {isAdded ? 'En tu biblioteca' : 'Agregar a mi biblioteca'}
+        </button>
+      )}
+    </article>
+  );
 }
 
 export default Song;
